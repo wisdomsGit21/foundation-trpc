@@ -1,0 +1,25 @@
+{
+  "name": "foundation-trpc",
+  "version": "1.0.0",
+  "description": "",
+  "private": true,
+  "scripts": {
+    "format": "prettier \"{apps,libs}/**/*.{ts,tsx,js,json}\" --ignore-path .gitignore",
+    "format:check": "pnpm format --check",
+    "format:write": "pnpm format --write",
+    "build": "pnpm exec nx run-many -t build",
+    "tsc": "pnpm exec nx run-many -t tsc",
+    "lint": "pnpm exec nx run-many -t lint",
+    "validate": "pnpm format:write && pnpm tsc && pnpm lint && pnpm build",
+    "prepare": "husky install"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "nx": "19.6.5",
+    "prettier": "^3.0.0",
+    "typescript": "^5.5.4",
+    "husky": "^8.0.0"
+  }
+}
