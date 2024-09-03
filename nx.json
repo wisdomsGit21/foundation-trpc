@@ -18,7 +18,8 @@
     "lint": {
       "dependsOn": [
         "^lint"
-      ]
+      ],
+      "cache": true
     }
   },
   "defaultBase": "master",
