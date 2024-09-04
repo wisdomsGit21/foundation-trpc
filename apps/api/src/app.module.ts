@@ -1,8 +1,9 @@
-import { Module } from '@nestjs/common'
+import { MiddlewareConsumer, Module, RequestMethod } from '@nestjs/common'
 import { AppController } from './app.controller'
 import { AppService } from './app.service'
 import { ConfigModule } from '@nestjs/config'
 import config from './config/configuration'
+import { TrpcMiddleware } from './trpc/trpc.middleware'
 
 @Module({
   imports: [
@@ -14,4 +15,10 @@ import config from './config/configuration'
   controllers: [AppController],
   providers: [AppService],
 })
-export class AppModule {}
+export class AppModule {
+  configure(consumer: MiddlewareConsumer) {
+    consumer
+      .apply(TrpcMiddleware)
+      .forRoutes({ path: '/trpc/*', method: RequestMethod.ALL })
+  }
+}
